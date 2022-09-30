@@ -21,7 +21,6 @@ const getServerResponse = (url, pid, setFunc) => {
     .then(jsonObject => setFunc(jsonObject))
     .catch(error => console.error(error));
 
-    console.log(url)
 }
 
 function Home() {
@@ -31,10 +30,11 @@ function Home() {
     const userId = data["user"] !== null ? data["user"]["id"] : null
     const username = data["user"] !== null ? data["user"]["first_name"] : "Guest";
     const signed_in = data["user"] !== null ? true : false;
+    const activated = data.activationSuccess;
 
-    const top_players_api_url = "http://localhost:8000/gamedata/get_top_players/";
-    const top_words_api_url = "http://localhost:8000/gamedata/get_top_words/";
-    const my_stats_url = "http://localhost:8000/gamedata/get_my_game_stats/";
+    const top_players_api_url = "http://rogerli2024.com/gamedata/get_top_players/";
+    const top_words_api_url = "http://rogerli2024.com/gamedata/get_top_words/";
+    const my_stats_url = "http://rogerli2024.com/gamedata/get_my_game_stats/";
 
     const [top_players_rows, setTopPlayerRows] = useState([]);
     const [top_words_rows, setTopWordRows] = useState([]);
@@ -49,6 +49,14 @@ function Home() {
     return (
     <div className='container'>
         <div class='jumbotron mt-5'>
+                {
+                    activated === true ?
+                    <div class="alert alert-success" role="alert">
+                        Account activated. Please login to use your account to continue.
+                    </div>
+                    :
+                    ""
+                }
             <h1 class='display-4'>Hello, {username}!</h1>
             <p class='lead'>
                 {
@@ -60,9 +68,10 @@ function Home() {
             <Game/>
             <hr class='my-4' />
 
-                <h4 class='display-4'>Game Statistics</h4><br/>
-                <p class='lead'>Your game data will be recorded if you're a signed in player.</p>
-
+                <div style={{marginBottom: "10px"}}>
+                    <h2>Game Statistics</h2>
+                    <p>Your game data will be recorded if you're a signed in player.</p>
+                </div>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>

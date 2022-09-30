@@ -65,16 +65,17 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?${formBody}`, config);
-
             dispatch({
                 type: GOOGLE_AUTH_SUCCESS,
-                payload: res.data
+                payload: res.data,
+                googleAuthSuccessful: true,
             });
 
             dispatch(load_user());
         } catch (err) {
             dispatch({
-                type: GOOGLE_AUTH_FAIL
+                type: GOOGLE_AUTH_FAIL,
+                googleAuthSuccessful: false,
             });
         }
     }
@@ -127,7 +128,6 @@ export const login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -154,14 +154,14 @@ export const signup = (first_name, last_name, email, password, re_password) => a
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
-
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
     } catch (err) {
         dispatch({
-            type: SIGNUP_FAIL
+            type: SIGNUP_FAIL,
+            payload: err.response.data
         })
     }
 };
@@ -174,7 +174,6 @@ export const verify = (uid, token) => async dispatch => {
     };
 
     const body = JSON.stringify({ uid, token });
-    console.log(body)
 
     try {
         await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/activation/`, body, config);

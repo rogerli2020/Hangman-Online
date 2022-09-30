@@ -3,8 +3,11 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../actions/auth';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Signup = ({ signup, isAuthenticated }) => {
+
+    const authInfo = useSelector(state => state.auth)
     const [accountCreated, setAccountCreated] = useState(false);
     const [formData, setFormData] = useState({
         first_name: '',
@@ -23,24 +26,36 @@ const Signup = ({ signup, isAuthenticated }) => {
 
         if (password === re_password) {
             signup(first_name, last_name, email, password, re_password);
-            setAccountCreated(true);
+            // setAccountCreated(true);
         }
     };
+
+    const getSignUpMessage = () => {
+        if (authInfo === null) return;
+        if (authInfo.signUpSuccess === null) return;
+        if (authInfo.signUpSuccess === true) {
+            return <div class="alert alert-success" role="alert">
+                Success! To continue, please click on the activation link we sent to your email.
+            </div>
+        } else {
+            if (authInfo.hasOwnProperty('email') && authInfo.hasOwnProperty('first_name')) {
+                return <div class="alert alert-danger">Email and username are already in use.</div>
+            } else if (authInfo.hasOwnProperty('email')) {
+                return <div class="alert alert-danger">Email is already in use.</div>
+            } else {
+                return (
+                    <div class="alert alert-danger">
+                        Username is already in use.
+                        Note: if you encountered this error while signing up with Google, your Google account is not eligible.
+                    </div>
+                )
+            }
+        }
+    }
 
     const continueWithGoogle = async () => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
-
-            window.location.replace(res.data.authorization_url);
-        } catch (err) {
-
-        }
-    };
-
-    const continueWithFacebook = async () => {
-        try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
-
             window.location.replace(res.data.authorization_url);
         } catch (err) {
 
@@ -58,6 +73,13 @@ const Signup = ({ signup, isAuthenticated }) => {
         <div className='container mt-5'>
             <h1>Sign Up</h1>
             <p>Create your Account</p>
+            {
+                getSignUpMessage()
+            }
+            {
+                password !== re_password ?
+                <div class="alert alert-danger">Passwords do not match.</div> : ""
+            }
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input

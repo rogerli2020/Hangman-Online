@@ -48,11 +48,6 @@ function Game() {
   dispatch(sendMessage(msg));
   }
 
-  // const open = () => {
-  // }
-  // const handleClose = () => {
-  // }
-
   return (
     <div style={{display: "flex", height: "750px"}}>
       {

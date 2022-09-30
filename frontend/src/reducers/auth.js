@@ -24,20 +24,41 @@ const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null
+    signUpSuccess: null,
+    user: null,
+    googleAuthSuccessful: null,
+    activationSuccess: null,
 };
 
 export default function(state = initialState, action) {
     const { type, payload } = action;
-
     switch(type) {
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true
+                isAuthenticated: true,
+                activationSuccess: null,
             }
         case LOGIN_SUCCESS:
+            localStorage.setItem('access', payload.access);
+            localStorage.setItem('refresh', payload.refresh);
+            return {
+                ...state,
+                isAuthenticated: true,
+                access: payload.access,
+                refresh: payload.refresh,
+                activationSuccess: null,
+            }
         case GOOGLE_AUTH_SUCCESS:
+            localStorage.setItem('access', payload.access);
+            localStorage.setItem('refresh', payload.refresh);
+            return {
+                ...state,
+                isAuthenticated: true,
+                access: payload.access,
+                refresh: payload.refresh,
+                googleAuthSuccessful: true,
+            }
         case FACEBOOK_AUTH_SUCCESS:
             localStorage.setItem('access', payload.access);
             localStorage.setItem('refresh', payload.refresh);
@@ -45,17 +66,18 @@ export default function(state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 access: payload.access,
-                refresh: payload.refresh
+                refresh: payload.refresh,
             }
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
+                signUpSuccess: true,
             }
         case USER_LOADED_SUCCESS:
             return {
                 ...state,
-                user: payload
+                user: payload,
             }
         case AUTHENTICATED_FAIL:
             return {
@@ -68,9 +90,26 @@ export default function(state = initialState, action) {
                 user: null
             }
         case GOOGLE_AUTH_FAIL:
+            return {
+                ...state,
+                googleAuthSuccessful: false,
+                isAuthenticated: false,
+                signUpSuccess: false,
+            }
         case FACEBOOK_AUTH_FAIL:
         case LOGIN_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false,
+                signUpSuccess: false,
+            }
         case SIGNUP_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false,
+                signUpSuccess: false,
+                signUpFailMessage: payload,
+            }
         case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
@@ -86,6 +125,10 @@ export default function(state = initialState, action) {
         case PASSWORD_RESET_CONFIRM_SUCCESS:
         case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_SUCCESS:
+            return {
+                ...state,
+                activationSuccess: true,
+            }
         case ACTIVATION_FAIL:
             return {
                 ...state

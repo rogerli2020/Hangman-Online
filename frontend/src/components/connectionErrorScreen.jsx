@@ -26,7 +26,7 @@ function ConnectionErrorScreen() {
                 <div style={{color: "white", display: "block", width: "100%", height: "100%"}}>
                     <div>
                         <WarningIcon sx={{ fontSize: 100 }}/>
-                        <div style={{fontSize: "xx-large", marginTop: "20px", fontWeight:"bolder"}}>Server connection lost.</div>
+                        <div style={{fontSize: "xx-large", marginTop: "20px", fontWeight:"bolder"}}>Game server connection failure.</div>
                         <div style={{fontSize: "medium"}}>The server or your Internet might be down.</div>
                     </div>
                     <br/>

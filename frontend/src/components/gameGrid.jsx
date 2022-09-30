@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 function GuesserGrid() {
 
     let myId = useSelector(state => state.myPlayerIdReducer)["id"];
-    console.log(myId)
     let exId = useSelector(state => state.exReducer)["id"];
     let gsrId = useSelector(state => state.gsrReducer)["id"];
     let currentRoundCount = useSelector(state=> state.currentRoundCountReducer);

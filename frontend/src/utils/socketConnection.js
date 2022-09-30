@@ -29,8 +29,8 @@ import {
 export default function SocketConnection() {
   
   const dispatch = useDispatch();
-  const addr = "ws://localhost:8765";
-  // const addr = "ws://10.0.0.110:8765/";
+  const addr = "ws://rogerli2024.com:8765/"
+  // const addr = "ws://localhost:8765";
   var socket = new WebSocket(addr);
 
   socket.onopen = function(e) {

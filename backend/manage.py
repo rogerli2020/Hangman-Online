@@ -3,6 +3,10 @@
 import os
 import sys
 
+# run game server as subprocess...
+#import subprocess
+#path_to_server_prog= "game_server/server.py"
+#game_server_process = subprocess.Popen([sys.executable, path_to_server_prog])
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'auth_system.settings')

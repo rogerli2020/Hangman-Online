@@ -13,12 +13,9 @@ const Login = ({ login, isAuthenticated }) => {
 
     const { email, password } = formData;
 
-    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const googleSucc = useSelector(state => state.auth).googleAuthSuccessful
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const [correctComb, setCorrectComb] = useState(0);
-    const onChange = e => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        setCorrectComb(0);
-    }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -47,12 +44,20 @@ const Login = ({ login, isAuthenticated }) => {
             <h1>Sign In</h1>
             <p>Sign into your Account</p>
             {
-                correctComb == 2 ?
+                correctComb === 2 ?
                     <div class="alert alert-danger" role="alert">
                         Invalid username or password.
                     </div>
                     :
                     ""
+            }
+            {
+                googleSucc === false ?
+                <div class="alert alert-danger" role="alert">
+                    Login through Google failed. Please make sure you're signed up before logging in.
+                </div>
+                :
+                ""
             }
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
