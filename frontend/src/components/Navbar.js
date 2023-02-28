@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
+
 const Navbar = ({ logout, isAuthenticated }) => {
     const [redirect, setRedirect] = useState(false);
 
@@ -30,8 +31,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                <Link className='navbar-brand' to='/'>HANGMAN ONLINE</Link>
+            <div className='navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark' role="navigation">
+                <Link className='navbar-brand' to='/'><b style={{fontSize:"xx-large"}}>HANGMAN ONLINE</b></Link>
                 <button 
                     className='navbar-toggler' 
                     type='button' 
@@ -43,8 +44,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 >
                     <span className='navbar-toggler-icon'></span>
                 </button>
+
                 {/* <div className='collapse navbar-collapse' id='navbarNav'> */}
                 <div id='navbarNav'>
+                    
                     <ul className='navbar-nav'>
                         <li className='nav-item active'>
                             <Link className='nav-link' to='/'>Home <span className='sr-only'>(current)</span></Link>
@@ -52,7 +55,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
                         {isAuthenticated ? authLinks() : guestLinks()}
                     </ul>
                 </div>
-            </nav>
+            </div>
             {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
         </Fragment>
     );

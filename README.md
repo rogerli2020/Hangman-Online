@@ -2,7 +2,7 @@
 
 ## Project Description
 Project deployed at http://rogerli2024.com/.
-This is a full-stack project that, when deployed, allows users to play Hangman game with each other interactiely through websocket connections over the Internet. If a user wishes to save their game statistics information, they can choose to sign up and log in using either their email or Google account.
+This is a full-stack project that, when deployed, allows users to play Hangman game with each other interactiely through websocket connections over the Internet. If a user wishes to save their game statistics information, they can choose to sign up and log in using their email (OAuth to be provided in later updates).
 The authentication system is modified based on the auth_system project found at https://github.com/linkedweb/auth_system. The dictionary database utilized in this project is developed by Ayesh Jayasekara and is found at https://github.com/AyeshJayasekara/English-Dictionary-SQLite.
 
 ## Technologies Used
@@ -14,7 +14,7 @@ The authentication system is modified based on the auth_system project found at 
 - **Python3**
     - Websocket game server.
 - **SQLite3/SQL**
-    - Updates/retrievals of game data.
+    - Database.
 - **AWS EC2**
     - Server deployment.
 - **Nginx**

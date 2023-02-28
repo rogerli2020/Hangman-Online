@@ -25,6 +25,7 @@ class Games:
                 client.game = self.games[id]
                 if self.games[id].full():
                     self.games[id].start()
+                    self.msg_pool.player_count_refresh()
                 return
         new_game = self.create_new_game()
         new_game.add_player(client)
@@ -90,6 +91,7 @@ class Games:
         game.p2.game = None
         print(f"[GAME FINISHED] Game with GID {game.id} finished.")
         del self.games[game.id]
+        self.msg_pool.player_count_refresh()
 
     def verify_jwt(self, player, token):
         if player.is_guest:

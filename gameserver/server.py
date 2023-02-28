@@ -51,6 +51,9 @@ class Packets:
     
     def clear(self):
         self.packets = []
+    
+    def player_count_refresh(self):
+        handle_player_count_stats()
 
 CLIENTS = set()
 CLIENT_IDS = set()
@@ -64,6 +67,7 @@ async def broadcast():
         for p in PACKETS.packets:
             if p.ws in CLIENTS:
                 await p.ws.send(json.dumps(p.msg))
+                # print(p.msg)
                 time.sleep(0.001)
         PACKETS.clear()
         await asyncio.sleep(0)
@@ -75,6 +79,10 @@ async def handler(websocket, path):
     print("Someone connected.")
     player = Client(websocket, name=f"GUEST{CURRENT_ID_COUNT}")
     CLIENTS.add(player)
+
+
+    handle_player_count_stats()
+
     try:
         async for msg in websocket:
             msg = json.loads(msg)
@@ -86,6 +94,35 @@ async def handler(websocket, path):
             CLIENT_IDS.remove(player.id)
         GAMES.handle_player_disconnect(player)
         print("Someone disconnected.")
+
+    handle_player_count_stats()
+
+
+def handle_player_count_stats():
+    current_player_counts = len(CLIENTS)
+    current_game_counts = len(GAMES.games)
+    current_player_gaming = 0
+    
+    try:
+        for c in CLIENTS:
+            if c.game != None:
+                current_player_gaming += 1
+    except:
+        print("Error 001")
+    
+    json_info = {
+        "msg_type": "meta_info",
+        "info_type": "player_counts",
+        "current_player_counts": current_player_counts,
+        "current_game_counts": current_game_counts,
+        "current_player_gaming": current_player_gaming
+    }
+
+    try:
+        for c in CLIENTS:
+            PACKETS.push(c, json_info)
+    except:
+        print("Error 002")
 
 
 # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)

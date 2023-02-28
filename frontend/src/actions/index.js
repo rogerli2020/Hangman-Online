@@ -173,3 +173,9 @@ export const setTimer = (data) => {
     }
 }
 
+export const setPlayerCount = (data) => {
+    return {
+        type: "SET_PLAYER_COUNT",
+        data: data
+    }
+}

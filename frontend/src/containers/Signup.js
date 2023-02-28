@@ -72,7 +72,8 @@ const Signup = ({ signup, isAuthenticated }) => {
     return (
         <div className='container mt-5'>
             <h1>Sign Up</h1>
-            <p>Create your Account</p>
+            <p>Create your Account<br/>
+            For your safety, use a password that you do not use for other sites.</p>
             {
                 getSignUpMessage()
             }
@@ -132,7 +133,6 @@ const Signup = ({ signup, isAuthenticated }) => {
             </div>
             </form>
             
-            <button className='btn btn-danger mt-2' onClick={continueWithGoogle}>Sign Up With Google</button>
             {/* <button className='btn btn-primary mt-3' onClick={continueWithFacebook}>
                 Continue With Facebook
             </button> */}

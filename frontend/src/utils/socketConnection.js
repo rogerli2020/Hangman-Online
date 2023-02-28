@@ -23,14 +23,15 @@ import {
     setMyPlayerId,
     setDisconnected,
     addNewMessage,
-    setTimer
+    setTimer,
+    setPlayerCount
   } from "../actions";
 
 export default function SocketConnection() {
   
   const dispatch = useDispatch();
-  const addr = "ws://rogerli2024.com:8765/"
-  // const addr = "ws://localhost:8765";
+  // const addr = "ws://rogerli2024.com:8765/"
+  const addr = "ws://localhost:8765";
   var socket = new WebSocket(addr);
 
   socket.onopen = function(e) {
@@ -126,6 +127,11 @@ export default function SocketConnection() {
           "content" : content
         }
           dispatch(addNewMessage(newJson));
+      } else if (msg_type === "meta_info") {
+        const player_counts = msg["current_player_counts"];
+        const current_player_gaming = msg["current_player_gaming"];
+        const current_game_counts = msg["current_game_counts"];
+        dispatch(setPlayerCount([player_counts, current_player_gaming, current_game_counts]));
       }
     }
 

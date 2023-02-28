@@ -81,7 +81,7 @@ function WordEntryScreen() {
                             <form onSubmit={handleSubmit}>
                                     <Input placeholder="Enter your word here..." />
                                     <Button type="submit" value="submit">SUBMIT</Button>
-                                    <Button onClick={handleRandom}>GO RANDOM*</Button>
+                                    <Button onClick={handleRandom}>CHOOSE RANDOM*</Button>
                                     <p style={{fontSize:"small", opacity:"75%"}}>* Your opponent will be compensated for {compensationForRandom} points if you choose random.</p>
                             </form>
                         </Card>

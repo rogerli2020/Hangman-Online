@@ -24,6 +24,7 @@ import wrongGuessesReducer from "./wrongGuesses";
 import myPlayerIdReducer from "./myPlayerId";
 import disconnectedReducer from "./disconnected";
 import timerReducer from "./timer";
+import playerCountReducer from "./playerCount";
 import auth from './auth';
 
 const allReducers = combineReducers(
@@ -53,6 +54,7 @@ const allReducers = combineReducers(
         chosenWordReducer,
         disconnectedReducer,
         timerReducer,
+        playerCountReducer,
     }
 )
 

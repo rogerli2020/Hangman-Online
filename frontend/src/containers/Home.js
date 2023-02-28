@@ -10,6 +10,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Card } from '@mui/material';
 
 
 const getServerResponse = (url, pid, setFunc) => {
@@ -27,6 +29,7 @@ function Home() {
 
 
     const data = useSelector(state => state.auth, shallowEqual);
+    const playerCount = useSelector(state => state.playerCountReducer);
     const userId = data["user"] !== null ? data["user"]["id"] : null
     const username = data["user"] !== null ? data["user"]["first_name"] : "Guest";
     const signed_in = data["user"] !== null ? true : false;
@@ -48,7 +51,20 @@ function Home() {
 
     return (
     <div className='container'>
-        <div class='jumbotron mt-5'>
+        {/* <div class='jumbotron mt-5'> */}
+        {/* <div class='card-panel grey lighten-2'> */}
+        <Card sx={{ p: 3, mt:10 }} style={{backgroundColor: "LemonChiffon", fontSize: "x-large"}}>
+            <GitHubIcon fontSize="large"/>    Visit the GitHub page <a href="https://github.com/rogerli2020/Hangman-Online">here</a>.
+        </Card>
+
+        <Card sx={{ p: 3, mt:1 }} style={{backgroundColor: "lightgray", fontSize: "large"}}>
+            There are currently <b>{playerCount[0]} player(s)</b> connected.
+            <b> {playerCount[1]} </b> of them are in a game.
+            <b> {playerCount[2]}  game(s)</b> are currently being hosted.
+        </Card>
+
+        <Card sx={{ p: 5, mt: 1 }} style={{backgroundColor: "rgb(230, 230, 230)"}}>
+            <br/>
                 {
                     activated === true ?
                     <div class="alert alert-success" role="alert">
@@ -64,13 +80,14 @@ function Home() {
                     "You're not signed in. Your game data will not be saved unless you sign in." :
                     "You're signed in. Your game data will be saved."
                 }
+                <br/>To test the game application, open the same website in another browser tab.
             </p>
             <Game/>
             <hr class='my-4' />
 
                 <div style={{marginBottom: "10px"}}>
                     <h2>Game Statistics</h2>
-                    <p>Your game data will be recorded if you're a signed in player.</p>
+                    <p>Your game data will be recorded if you're signed in.</p>
                 </div>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -161,6 +178,12 @@ function Home() {
                     </Table>
                 </TableContainer><br/>
 
+        </Card>
+
+
+        <div style={{margin: "75px", textAlign: "center"}}>
+            By <a href="https://github.com/rogerli2020">Roger Li</a>.<br></br>
+            Last Updated: Feb 2023
         </div>
     </div>
     )
