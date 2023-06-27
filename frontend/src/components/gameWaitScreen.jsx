@@ -10,11 +10,11 @@ function GameWaitScreen() {
 
     return (
         <div style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
-            zIndex: "2",
+            // position: "absolute",
+            // width: "100%",
+            // height: "100%",
+            // backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+            // zIndex: "2",
             maxWidth: "1000px",
             maxHeight: "750px",
             backdropFilter: "blur(50px)"

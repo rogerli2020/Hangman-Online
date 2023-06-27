@@ -13,13 +13,13 @@ function ConnectionErrorScreen() {
     return (
         // getMessage()
         <div style={{
-            position: "absolute",
+            // position: "absolute",
             width: "100%",
             height: "100%",
             backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(255,0,0,0.75))",
-            zIndex: "2",
-            maxWidth: "1000px",
-            maxHeight: "750px",
+            // zIndex: "2",
+            // maxWidth: "1000px",
+            // maxHeight: "750px",
             backdropFilter: "blur(25px)",
         }}>
             <div style={{margin:"50px"}}>

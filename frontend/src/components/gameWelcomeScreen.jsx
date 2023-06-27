@@ -8,13 +8,13 @@ function GameWelcomeScreen(props) {
 
     return (
         <div style={{
-            position: "absolute",
-            zIndex: "2",
-            width: "100%",
-            height: "100%",
-            backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
-            width: "1000px",
-            height: "750px",
+            // position: "absolute",
+            // zIndex: "2",
+            // width: "100%",
+            // height: "100%",
+            // backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+            maxWidth: "1000px",
+            maxHeight: "750px",
             backdropFilter: "blur(50px)"
         }}>
             <div style={{margin:"50px"}}>

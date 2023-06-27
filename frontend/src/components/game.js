@@ -48,34 +48,36 @@ function Game() {
   dispatch(sendMessage(msg));
   }
 
+  const choosePage = () => {
+    if (disconnected) return <ConnectionErrorScreen/>;
+    if (gameState === gamevars["GAME_STATE_FINISHED"]) return <ConclusionPage/>;
+    if (!isReady) return <GameWelcomeScreen onClickFunc={handlePlayerReady}/>;
+    if (!disconnected && gameState === gamevars["GAME_STATE_WAITING"]) return <GameWaitScreen/>;
+    if (roundState === gamevars["ROUND_STATE_RECESS"]) return <ScoreBoardScreen/>;
+    if (roundState === gamevars["ROUND_STATE_CHOOSING_WORD"]) return handleChooseStage();
+    if (ex === myPlayerId && hintRequested) return <HintChoicePage/>;
+    if (gameState === gamevars["ROUND_STATE_GUESSING_WORD"]) return <div style={{padding: "50px"}}><GameGrid/></div>;
+  }
+
   return (
     <div style={{display: "flex", height: "750px"}}>
-      {
-        roundState === gamevars["ROUND_STATE_RECESS"] ? <ScoreBoardScreen/> : <div/>
-      }
-      {
-        roundState === gamevars["ROUND_STATE_CHOOSING_WORD"] ? handleChooseStage() : <div/>
-      }
       <div style={{
-        backgroundImage: "linear-gradient(to right, rgb(111,50,122), rgb(111,0,233))",
+        backgroundImage: "linear-gradient(to right, rgb(80,20,90), rgb(80,0,200))",
         width: "100%",
         maxWidth: "1000px",
         height: "750px",
         }}>
           
-        <div style={{padding: "50px"}}>
+        {choosePage()}
 
-          {
-            roundState === gamevars["ROUND_STATE_GUESSING_WORD"] ? <GameGrid/> : <div/>
-          }
-        </div>
       </div>
 
-      {(ex === myPlayerId && hintRequested) ? <HintChoicePage/> : ""}
+      {/* overlay */}
+      {/* {(ex === myPlayerId && hintRequested) ? <HintChoicePage/> : ""}
       {(!disconnected && gameState === gamevars["GAME_STATE_WAITING"]) ? <GameWaitScreen/> : ""}
       {(gameState === gamevars["GAME_STATE_FINISHED"]) ? <ConclusionPage/> : ""}
       {!isReady ?<GameWelcomeScreen onClickFunc={handlePlayerReady}/> : ""}
-      {disconnected ? <ConnectionErrorScreen/> : ""}
+      {disconnected ? <ConnectionErrorScreen/> : ""} */}
 
     </div>
   );

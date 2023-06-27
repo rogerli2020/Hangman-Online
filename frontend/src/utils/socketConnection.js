@@ -30,8 +30,9 @@ import {
 export default function SocketConnection() {
   
   const dispatch = useDispatch();
-  // const addr = "ws://rogerli2024.com:8765/"
-  const addr = "ws://localhost:8765";
+  const addr = `ws://hangman.rogerli.net:8765/`;
+  // const addr = `ws://${process.env.REACT_APP_API_URL_DOMAIN}:8765/`;
+  // const addr = "ws://localhost:8765";
   var socket = new WebSocket(addr);
 
   socket.onopen = function(e) {

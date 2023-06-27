@@ -20,6 +20,9 @@ const Navbar = ({ logout, isAuthenticated }) => {
             <li className='nav-item'>
                 <Link className='nav-link' to='/signup'>Sign Up</Link>
             </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/howtoplay'>How To Play</Link>
+            </li>
         </Fragment>
     );
 
@@ -32,7 +35,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
     return (
         <Fragment>
             <div className='navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark' role="navigation">
-                <Link className='navbar-brand' to='/'><b style={{fontSize:"xx-large"}}>HANGMAN ONLINE</b></Link>
+                <Link className='navbar-brand' to='/'><b style={{fontSize:"large"}}>HANGMAN ONLINE</b></Link>
                 <button 
                     className='navbar-toggler' 
                     type='button' 

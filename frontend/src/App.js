@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
+import HowToPlay from './containers/HowToPlay';
 import Activate from './containers/Activate';
 import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
@@ -24,6 +25,7 @@ const App = () => (
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/howtoplay' component={HowToPlay} />
                     <Route exact path='/signup' component={Signup} />
                     <Route exact path='/facebook' component={Facebook} />
                     <Route exact path='/google' component={Google} />

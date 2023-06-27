@@ -44,11 +44,11 @@ function WordEntryScreen() {
 
     return (
         <div style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0,0,0,0.4)",
-            zIndex: "2",
+            // position: "absolute",
+            // width: "100%",
+            // height: "100%",
+            // backgroundColor: "rgba(0,0,0,0.4)",
+            // zIndex: "2",
             maxWidth: "1000px",
             maxHeight: "750px",
             backdropFilter: "blur(50px)"
