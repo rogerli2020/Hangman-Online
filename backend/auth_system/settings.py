@@ -11,13 +11,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from secret_key import SECRET_KEY
 from datetime import timedelta
 # from SECRET_KEY import SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'g=!&gyqa-qj3q(=-(=$gxrcb_-zb4l)b!#6xa2hrj_m5kxyet)'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -25,11 +25,13 @@ SECRET_KEY = 'g=!&gyqa-qj3q(=-(=$gxrcb_-zb4l)b!#6xa2hrj_m5kxyet)'
 # SECRET_KEY = '[HIDDEN]'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
     'rogerli2024.com',
+    'hangman.rogerli.net',
+    'rogerli.net',
     ]
 
 # Application definition
