@@ -16,7 +16,7 @@ const getServerResponse = (url, pid, setFunc) => {
 function HowToPlay() {
 
     return (
-    <div style={{backgroundImage: "linear-gradient(to top, rgb(222,222,222), rgb(53,58,63))", minHeight: "100vh"}}>
+    <div style={{backgroundImage: "linear-gradient(to top, rgb(244,244,244), rgb(53,58,63))", minHeight: "100vh"}}>
     <div style={{display: "flex", justifyContent:"center", paddingTop:"50px"}}>
         <Card sx={{ p: 5, mt: 1 }} style={{backgroundColor: "rgba(230, 230, 230, 0.8)", width: "85%"}}>
             <br/>

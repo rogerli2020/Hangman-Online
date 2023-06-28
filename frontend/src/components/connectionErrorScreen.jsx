@@ -6,17 +6,17 @@ import { Button } from '@mui/material';
 
 function ConnectionErrorScreen() {
 
-    let serverSocket = useSelector(state => state.serverSocketReducer);
-    let gameState = useSelector(state => state.gameStateReducer);
-    let gamevars = useSelector(state => state.gamevarsReducer);
+    // let serverSocket = useSelector(state => state.serverSocketReducer);
+    // let gameState = useSelector(state => state.gameStateReducer);
+    // let gamevars = useSelector(state => state.gamevarsReducer);
 
     return (
         // getMessage()
         <div style={{
             // position: "absolute",
-            width: "100%",
-            height: "100%",
-            backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(255,0,0,0.75))",
+            // width: "100%",
+            // height: "100%",
+            // backgroundImage: "linear-gradient(to left top, rgba(0,0,0,0.5), rgba(255,0,0,0.75))",
             // zIndex: "2",
             // maxWidth: "1000px",
             // maxHeight: "750px",

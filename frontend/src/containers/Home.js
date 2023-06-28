@@ -12,6 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InfoRounded from '@mui/icons-material/Info';
+import People from '@mui/icons-material/People';
 import { Card } from '@mui/material';
 
 
@@ -51,7 +52,7 @@ function Home() {
     }, [userId])
 
     return (
-    <div style={{backgroundImage: "linear-gradient(to top, rgb(222,222,222), rgb(53,58,63))", minHeight: "100vh"}}>
+    <div style={{backgroundImage: "linear-gradient(to top, rgb(244,244,244), rgb(53,58,63))", minHeight: "100vh"}}>
     <div style={{display: "flex", justifyContent:"center", paddingTop:"50px"}}>
         <Card sx={{ p: 5, mt: 1 }} style={{backgroundColor: "rgba(230, 230, 230, 0.8)", width: "60%"}}>
             <br/>
@@ -74,11 +75,12 @@ function Home() {
                 <br/>To test the game application, open the same website in another browser tab.
             </p>
 
-                <div style={{backgroundImage: "linear-gradient(to right, rgba(200,155,200, 1), rgba(122,122,122, 0))", borderRadius:"5px", padding:"5px", marginBottom:"2px"}}>
-                    <InfoRounded/>There are currently <b>{playerCount[0]} player(s)</b> connected.
+                {/* <Card style={{backgroundImage: "linear-gradient(to right, rgba(233,233,233, 1), rgba(122,122,122, 0))", borderRadius:"5px", padding:"5px", marginBottom:"2px"}}> */}
+                <Card style={{padding:"5px", marginBottom:"5px", backgroundColor: "rgba(52,73,94, 0.2)"}}>
+                    <People/>There are currently <b>{playerCount[0]}</b> players connected.
                     <b> {playerCount[1]} </b> of them are in a game.
                     {/* <b> {playerCount[2]}  game(s)</b> are currently being hosted. */}
-                </div>
+                </Card>
 
             <Game/>
         </Card>
@@ -202,7 +204,14 @@ function Home() {
 
             <hr/>
             <h2>Visitor Statistics</h2>
-            <iframe className="adc" scrolling="no" frameBorder="0" allowtransparency="true" src="//rf.revolvermaps.com/w/6/a/a2.php?i=58syu0oioz7&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-400&amp;ly=400&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80"></iframe>
+            {/* <iframe 
+                className="adc" 
+                scrolling="no" 
+                frameBorder="0" 
+                allowtransparency="true" 
+                src="//rf.revolvermaps.com/w/6/a/a2.php?i=58syu0oioz7&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-400&amp;ly=400&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80"
+            ></iframe> */}
+            <a href="https://www.revolvermaps.com/livestats/57axayg53wl/"><img src="//rf.revolvermaps.com/h/m/a/0/ff0000/128/0/57axayg53wl.png"/></a>
 
         </Card>
     </div>
