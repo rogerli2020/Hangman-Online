@@ -1,2 +1,3 @@
 SECRET_KEY.py
 .DS_Store
+backend/db.sqlite3

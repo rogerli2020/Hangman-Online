@@ -11,9 +11,9 @@ def get_top_players(request):
     sql = """
         SELECT *
         FROM gamedata_player
-        WHERE games_played > 5
+        WHERE games_played > 2
         ORDER BY win_ratio DESC
-        LIMIT 3
+        LIMIT 5
     """
     res = [r for r in Player.objects.raw(sql)]
     for i in range(len(res)):
@@ -25,7 +25,7 @@ def get_top_words(request):
         SELECT *
         FROM gamedata_word
         ORDER BY frequency DESC
-        LIMIT 5
+        LIMIT 8
     """
     res = [r for r in Word.objects.raw(sql)]
     for i in range(len(res)):

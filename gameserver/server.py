@@ -7,6 +7,9 @@ import ssl
 import pathlib
 from games import Games
 
+SSL_CERT_PATH = "/home/ubuntu/hangman.rogerli.net/fullchain.pem"
+SSL_KEY_PATH = "/home/ubuntu/hangman.rogerli.net/privkey.pem"
+
 CURRENT_ID_COUNT = 0
 GAMEVARS_PATH = "./gameserver/gamevars.json"
 with open(GAMEVARS_PATH, "r") as f:
@@ -63,14 +66,18 @@ GAMES = Games(msg_pool=PACKETS, client_ids=CLIENT_IDS)
 async def broadcast():
     global PACKETS
     while True:
-        time.sleep(0.01)
-        for p in PACKETS.packets:
-            if p.ws in CLIENTS:
-                await p.ws.send(json.dumps(p.msg))
-                # print(p.msg)
-                time.sleep(0.001)
-        PACKETS.clear()
-        await asyncio.sleep(0)
+        try:
+            while True:
+                time.sleep(0.01)
+                for p in PACKETS.packets:
+                    if p.ws in CLIENTS:
+                        await p.ws.send(json.dumps(p.msg))
+                        # print(p.msg)
+                        time.sleep(0.001)
+                PACKETS.clear()
+                await asyncio.sleep(0)
+        except Exception as e:
+            continue
 
 asyncio.get_event_loop().create_task(broadcast())
 
@@ -124,13 +131,12 @@ def handle_player_count_stats():
     except:
         print("Error 002")
 
+# secure server setup
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ssl_context.load_cert_chain(SSL_CERT_PATH, SSL_KEY_PATH)
 
-# ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-# ssl_context.load_cert_chain(
-#     pathlib.Path(__file__).with_name("localhost.pem"))
-
-# start_server = websockets.serve(handler, port=8765)
-start_server = websockets.serve(handler, "localhost", port=8765)
+start_server = websockets.serve(handler, port=8765, ssl=ssl_context)
+# start_server = websockets.serve(handler, "localhost", port=8765)
 print("[GAME SERVER] Game server started successfully.")
 # start_server = websockets.serve(handler, "localhost", port=8765, ssl=ssl_context)
 

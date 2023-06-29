@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "http://hangman.rogerli.net",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -16,13 +17,13 @@
     "query-string": "^6.13.7",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1",
+    "react-scripts": "^4.0.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "rm -rf ../backend/build && react-scripts build && cp -r build ../backend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

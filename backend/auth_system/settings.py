@@ -14,6 +14,9 @@ import os
 from auth_system.secret_key import SECRET_KEY
 from datetime import timedelta
 
+import mimetypes
+mimetypes.add_type("text/javascript", ".js", True)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,6 +34,7 @@ ALLOWED_HOSTS = [
     'rogerli2024.com',
     'hangman.rogerli.net',
     'rogerli.net',
+    '127.0.0.1',
     ]
 
 # Application definition
@@ -55,6 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -223,3 +228,6 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 AUTH_USER_MODEL = 'accounts.UserAccount'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+

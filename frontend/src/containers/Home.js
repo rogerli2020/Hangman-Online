@@ -37,9 +37,9 @@ function Home() {
     const signed_in = data["user"] !== null ? true : false;
     const activated = data.activationSuccess;
 
-    const top_players_api_url = "http://hangman.rogerli.net/gamedata/get_top_players/";
-    const top_words_api_url = "http://hangman.rogerli.net/gamedata/get_top_words/";
-    const my_stats_url = "http://hangman.rogerli.net/gamedata/get_my_game_stats/";
+    const top_players_api_url = "https://hangman.rogerli.net/gamedata/get_top_players/";
+    const top_words_api_url = "https://hangman.rogerli.net/gamedata/get_top_words/";
+    const my_stats_url = "https://hangman.rogerli.net/gamedata/get_my_game_stats/";
 
     const [top_players_rows, setTopPlayerRows] = useState([]);
     const [top_words_rows, setTopWordRows] = useState([]);
