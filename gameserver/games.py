@@ -7,6 +7,8 @@ SECRET = SECRET_KEY
 DB_PATH = "./backend/db.sqlite3"
 PF = ProfanityFilter()
 
+TEXT_LIMIT = 256
+
 class Games:
     def __init__(self, msg_pool, client_ids) -> None:
         self.msg_pool = msg_pool
@@ -42,6 +44,17 @@ class Games:
         pass
 
     def handle_player_msg(self, player, message):
+
+        if len(str(message)) > TEXT_LIMIT:
+            self.msg_pool.push(
+                player, {
+                    "msg_type": "chat",
+                    "chat_type": "warning",
+                    "sender": "SERVER",
+                    "content": "Request string too long. Refuse to handle."
+                }
+            )
+
         # this code is very spaghetti
         message_type = message["msg_type"]
         if message_type == "join":
