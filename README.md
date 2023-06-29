@@ -1,7 +1,7 @@
 # Hangman Online
 
 ## Project Description
-Project is deployed at http://hangman.rogerli.net/.
+Project is deployed at https://hangman.rogerli.net/.
 This is a full-stack project that, when deployed, allows users to play a real-time Hangman game with each other interactively through websocket connections over the Internet. If a user wishes to save their game statistics information, they can choose to sign up and log in using their email.
 The authentication system is modified based on the auth_system project found at https://github.com/linkedweb/auth_system. The dictionary database utilized in this project is developed by Ayesh Jayasekara and is found at https://github.com/AyeshJayasekara/English-Dictionary-SQLite.
 
