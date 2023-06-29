@@ -45,7 +45,9 @@ class Games:
 
     def handle_player_msg(self, player, message):
 
+        # prohibit players from sending rediculously long messages.
         if len(str(message)) > TEXT_LIMIT:
+            print("[WARNING] Someone sent a very long message.")
             self.msg_pool.push(
                 player, {
                     "msg_type": "chat",
@@ -54,6 +56,8 @@ class Games:
                     "content": "Request string too long. Refuse to handle."
                 }
             )
+
+            return
 
         # this code is very spaghetti
         message_type = message["msg_type"]
