@@ -7,7 +7,7 @@ SECRET = SECRET_KEY
 DB_PATH = "./backend/db.sqlite3"
 PF = ProfanityFilter()
 
-TEXT_LIMIT = 256
+TEXT_LIMIT = 512
 
 class Games:
     def __init__(self, msg_pool, client_ids) -> None:
