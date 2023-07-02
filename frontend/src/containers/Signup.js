@@ -46,7 +46,6 @@ const Signup = ({ signup, isAuthenticated }) => {
                 return (
                     <div class="alert alert-danger">
                         Username is already in use.
-                        Note: if you encountered this error while signing up with Google, your Google account is not eligible.
                     </div>
                 )
             }
@@ -72,8 +71,7 @@ const Signup = ({ signup, isAuthenticated }) => {
     return (
         <div className='container mt-5'>
             <h1>Sign Up</h1>
-            <p>Create your Account<br/>
-            For your safety, use a password that you do not use for other sites.</p>
+            <p>Create your Account</p>
             {
                 getSignUpMessage()
             }
