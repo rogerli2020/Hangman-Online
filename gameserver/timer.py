@@ -1,7 +1,7 @@
 import time
 import threading
 
-TICKRATE = 2
+TICKRATE = 5
 UPDATE_INTERVAL = 1 / TICKRATE
 
 class Timer:
