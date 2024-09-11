@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/Hangman-Online/static/js/main.0c304c70.chunk.js",
+    "main.js.map": "/Hangman-Online/static/js/main.0c304c70.chunk.js.map",
+    "runtime-main.js": "/Hangman-Online/static/js/runtime-main.d94e079f.js",
+    "runtime-main.js.map": "/Hangman-Online/static/js/runtime-main.d94e079f.js.map",
+    "static/js/2.ef8e4e63.chunk.js": "/Hangman-Online/static/js/2.ef8e4e63.chunk.js",
+    "static/js/2.ef8e4e63.chunk.js.map": "/Hangman-Online/static/js/2.ef8e4e63.chunk.js.map",
+    "index.html": "/Hangman-Online/index.html",
+    "static/js/2.ef8e4e63.chunk.js.LICENSE.txt": "/Hangman-Online/static/js/2.ef8e4e63.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d94e079f.js",
+    "static/js/2.ef8e4e63.chunk.js",
+    "static/js/main.0c304c70.chunk.js"
+  ]
+}
