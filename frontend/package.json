@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "http://hangman.rogerli.net",
+  "homepage": "http://rogerli2020.github.io/Hangman-Online",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "rm -rf ../backend/build && react-scripts build && cp -r build ../backend/build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "react-scripts build", 
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
